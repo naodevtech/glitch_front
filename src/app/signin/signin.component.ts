@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { JwtService } from '../jwt.service';
+
 @Component({
 	selector: 'app-signin',
 	templateUrl: './signin.component.html',
@@ -11,26 +11,20 @@ export class SigninComponent implements OnInit {
 	email: string;
 	password: string;
 	message: string;
-
-	constructor(public router: Router, private http: HttpClient) {}
+	constructor(public router: Router, private JwtService: JwtService) {}
 
 	ngOnInit(): void {}
 
-	login() {
-		this.http
-			.post(`${environment.apiUrl}api/signin`, {
-				email: this.email,
-				password: this.password,
-			})
-			.subscribe(
-				(response) => {
-					console.log(response);
-					this.router.navigate(['/feed']);
-				},
-				(err) => {
-					console.log(err);
-					this.message = err.error.error;
-				}
-			);
+	signin() {
+		const credentials = {
+			email: this.email,
+			password: this.password,
+		};
+		this.JwtService.login(credentials).subscribe((response) => {
+			const token = response['token'];
+			const link = ['feed'];
+			localStorage.setItem('token', token);
+			this.router.navigate(link);
+		});
 	}
 }

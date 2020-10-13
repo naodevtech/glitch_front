@@ -1,1 +1,4 @@
-<div class="container-feed"></div>
+<div class="container-feed" *ngFor="let post of posts">
+    <h1>{{post.username}}</h1>
+    <h1>{{post.Posts.content}}</h1>
+</div>

@@ -1,12 +1,12 @@
 <div class="container-signin"> 
     <img class="logo" src="../../assets/logos/glitch_logo_official.svg" alt="logo" />
-    <div *ngIf="message" class="box-message-error">
-        <p>{{message}}</p>
+    <div class="box-message-error">
+        <p></p>
     </div>
     <form>
         <input [(ngModel)]="email" name="email" type="text" placeholder="Tapez votre adresse-email" />
         <input type="password" [(ngModel)]="password" name="password" placeholder="Tapez votre mot de passe" />
-        <input class="btn_signin"  type="submit" (click)="login()" value="Connexion"/>
+        <input class="btn_signin"  type="submit" value="Connexion" (click)="signin()">
         <div class="bar"></div>
         <input class="btn_signup" (click)="router.navigate(['/signup']);" type="button" value="Inscription"/>
     </form>
