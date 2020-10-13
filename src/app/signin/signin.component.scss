@@ -9,6 +9,23 @@
 	justify-content: center;
 	.logo {
 		height: 140px;
+		margin-bottom: 1em;
+	}
+	.box-message-error {
+		height: 8%;
+		width: 80%;
+		background-color: #f8d7da;
+		border: 2px solid red;
+		border-radius: 0.8rem;
+		padding: 1em;
+		margin-top: 1em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		p {
+			text-align: center;
+			color: rgb(126, 15, 15);
+		}
 	}
 	form {
 		height: 45%;
