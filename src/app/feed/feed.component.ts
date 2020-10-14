@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { JwtService } from '../jwt.service';
 
 export interface Post {
 	allPosts: [
@@ -15,6 +16,7 @@ export interface Post {
 		}
 	];
 }
+
 @Component({
 	selector: 'app-feed',
 	templateUrl: './feed.component.html',
@@ -22,19 +24,25 @@ export interface Post {
 })
 export class FeedComponent implements OnInit {
 	posts: Post;
+	userConnected;
 
-	constructor(public router: Router, private http: HttpClient) {}
+	constructor(
+		public router: Router,
+		private http: HttpClient,
+		private JwtService: JwtService
+	) {}
 
 	ngOnInit(): void {
-		const token = 'Bearer ' + localStorage.getItem('token');
-		let headers = new HttpHeaders({
-			'Content-Type': 'application/json',
-			Authorization: token,
-		});
-		let options = { headers: headers };
+		this.userConnected = {
+			id: localStorage.getItem('id'),
+			firstname: localStorage.getItem('firstname'),
+			avatar: localStorage.getItem('avatar'),
+		};
+		const options = this.JwtService.loggedIn();
+		console.log(options);
 		this.http.get('http://localhost:8000/api/posts', options).subscribe(
 			(response) => {
-				this.posts = response['allPosts'];
+				this.posts = response['allPosts'].reverse();
 				console.log(this.posts);
 			},
 			(error) => {

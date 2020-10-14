@@ -1,7 +1,7 @@
 <div class="container-signin"> 
     <img class="logo" src="../../assets/logos/glitch_logo_official.svg" alt="logo" />
-    <div class="box-message-error">
-        <p></p>
+    <div *ngIf="message" class="box-message-error">
+        <p>{{message}}</p>
     </div>
     <form>
         <input [(ngModel)]="email" name="email" type="text" placeholder="Tapez votre adresse-email" />
