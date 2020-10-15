@@ -50,10 +50,24 @@ export class FeedComponent implements OnInit {
 
 	sortPosts(posts) {
 		return posts.sort((a, b) => {
-			console.log(a.createdAt);
 			return (
 				<any>new Date(b.Posts.createdAt) - <any>new Date(a.Posts.createdAt)
 			);
 		});
+	}
+
+	toggleLike(id) {
+		const options = this.JwtService.loggedIn();
+		console.log(options);
+		this.http
+			.get(`http://localhost:8000/api/post/${id}/likes`, options)
+			.subscribe(
+				(response) => {
+					console.log(response);
+				},
+				(error) => {
+					console.log(error);
+				}
+			);
 	}
 }

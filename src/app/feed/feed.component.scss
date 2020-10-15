@@ -21,11 +21,19 @@
 			color: white;
 			font-weight: 300;
 			padding-bottom: 1em;
-			.avatar {
-				height: 40px;
-				width: 40px;
-				object-fit: cover;
-				border-radius: 3rem;
+			.post_infos_user {
+				display: flex;
+				align-items: center;
+				.avatar {
+					height: 40px;
+					width: 40px;
+					object-fit: cover;
+					border-radius: 3rem;
+					margin-right: 0.5em;
+				}
+				h3 {
+					font-size: 1em;
+				}
 			}
 			span {
 				font-size: 0.8em;

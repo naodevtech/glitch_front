@@ -16,22 +16,18 @@ import { BtnPostComponent } from './btn-post/btn-post.component';
 import { ComposePostComponent } from './compose-post/compose-post.component';
 
 @NgModule({
-	declarations: [AppComponent, SignupComponent, SigninComponent, FeedComponent, NavigationComponent, SearchBarComponent, TabBarComponent, BtnPostComponent, ComposePostComponent],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		HttpClientModule,
-		FormsModule,
-		// JwtModule.forRoot({
-		// 	config: {
-		// 		tokenGetter: () => {
-		// 			return localStorage.getItem('access_token');
-		// 		},
-		// 		allowedDomains: ['localhost:4200'],
-		// 		disallowedRoutes: ['http://example.com/examplebadroute/'],
-		// 	},
-		// }),
+	declarations: [
+		AppComponent,
+		SignupComponent,
+		SigninComponent,
+		FeedComponent,
+		NavigationComponent,
+		SearchBarComponent,
+		TabBarComponent,
+		BtnPostComponent,
+		ComposePostComponent,
 	],
+	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })
