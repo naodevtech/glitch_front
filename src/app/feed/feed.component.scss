@@ -5,9 +5,9 @@
 	flex-direction: column;
 	padding: 1em;
 	margin-top: 4em;
+	margin-bottom: 4em;
 	.box_post {
-		// height: 100%;
-		background-color: #1f1f23;
+		background-color: #141415;
 		margin-top: 1em;
 		margin-bottom: 1em;
 		padding: 1em;
@@ -20,9 +20,10 @@
 			justify-content: space-between;
 			color: white;
 			font-weight: 300;
+			padding-bottom: 1em;
 			.avatar {
-				height: 30px;
-				width: 30px;
+				height: 40px;
+				width: 40px;
 				object-fit: cover;
 				border-radius: 3rem;
 			}
@@ -37,7 +38,7 @@
 				color: #ffffff;
 				font-weight: bold;
 				line-height: 1.3em;
-				font-size: 0.7em;
+				font-size: 0.9em;
 			}
 		}
 	}

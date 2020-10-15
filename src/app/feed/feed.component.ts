@@ -23,7 +23,7 @@ export interface Post {
 	styleUrls: ['./feed.component.scss'],
 })
 export class FeedComponent implements OnInit {
-	posts: Post;
+	posts: any[];
 	userConnected;
 
 	constructor(
@@ -33,22 +33,27 @@ export class FeedComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.userConnected = {
-			id: localStorage.getItem('id'),
-			firstname: localStorage.getItem('firstname'),
-			avatar: localStorage.getItem('avatar'),
-		};
 		const options = this.JwtService.loggedIn();
 		console.log(options);
 		this.http.get('http://localhost:8000/api/posts', options).subscribe(
 			(response) => {
-				this.posts = response['allPosts'].reverse();
+				this.posts = response['allPosts'];
 				console.log(this.posts);
+				this.sortPosts(this.posts);
 			},
 			(error) => {
 				console.log(error);
 				this.router.navigate(['/']);
 			}
 		);
+	}
+
+	sortPosts(posts) {
+		return posts.sort((a, b) => {
+			console.log(a.createdAt);
+			return (
+				<any>new Date(b.Posts.createdAt) - <any>new Date(a.Posts.createdAt)
+			);
+		});
 	}
 }

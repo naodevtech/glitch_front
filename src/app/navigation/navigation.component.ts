@@ -10,7 +10,6 @@ import { Location } from '@angular/common';
 })
 export class NavigationComponent implements OnInit {
 	avatar: string;
-	urlLocation: string;
 
 	constructor(
 		private location: Location,
@@ -21,8 +20,6 @@ export class NavigationComponent implements OnInit {
 	ngOnInit(): void {
 		this.avatar = localStorage.getItem('avatar');
 		console.log(location.pathname);
-		this.urlLocation = location.pathname.slice(1);
-		console.log(this.urlLocation);
 	}
 
 	disconnect() {

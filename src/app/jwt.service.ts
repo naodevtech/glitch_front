@@ -10,7 +10,6 @@ export class JwtService {
 	constructor(public router: Router, private http: HttpClient) {}
 
 	login(credentials) {
-		console.log(credentials);
 		return this.http.post(`${environment.apiUrl}api/signin`, credentials);
 	}
 

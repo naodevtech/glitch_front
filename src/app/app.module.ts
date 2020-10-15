@@ -12,9 +12,11 @@ import { FeedComponent } from './feed/feed.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TabBarComponent } from './tab-bar/tab-bar.component';
+import { BtnPostComponent } from './btn-post/btn-post.component';
+import { ComposePostComponent } from './compose-post/compose-post.component';
 
 @NgModule({
-	declarations: [AppComponent, SignupComponent, SigninComponent, FeedComponent, NavigationComponent, SearchBarComponent, TabBarComponent],
+	declarations: [AppComponent, SignupComponent, SigninComponent, FeedComponent, NavigationComponent, SearchBarComponent, TabBarComponent, BtnPostComponent, ComposePostComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
