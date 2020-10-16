@@ -15,8 +15,7 @@ export class SigninComponent implements OnInit {
 	constructor(public router: Router, private JwtService: JwtService) {}
 
 	ngOnInit(): void {
-		const isConnected = this.JwtService.loggedIn();
-		console.log(isConnected);
+		localStorage.clear();
 	}
 
 	signin() {
@@ -27,12 +26,14 @@ export class SigninComponent implements OnInit {
 		this.JwtService.login(credentials).subscribe(
 			(response) => {
 				const token = 'Bearer ' + response['token'];
+				const id = response['userConnected'].id;
 				const firstname = response['userConnected'].firstname;
 				const lastname = response['userConnected'].lastname;
 				const avatar = response['userConnected'].avatar;
 				const link = ['feed'];
 				// à opti
 				localStorage.setItem('token', token);
+				localStorage.setItem('id', id);
 				localStorage.setItem('firstname', firstname);
 				localStorage.setItem('lastname', lastname);
 				localStorage.setItem('avatar', avatar);

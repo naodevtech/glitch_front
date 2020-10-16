@@ -14,6 +14,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TabBarComponent } from './tab-bar/tab-bar.component';
 import { BtnPostComponent } from './btn-post/btn-post.component';
 import { ComposePostComponent } from './compose-post/compose-post.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
 	declarations: [
@@ -26,6 +27,7 @@ import { ComposePostComponent } from './compose-post/compose-post.component';
 		TabBarComponent,
 		BtnPostComponent,
 		ComposePostComponent,
+		ProfileComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
 	providers: [],

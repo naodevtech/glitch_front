@@ -25,6 +25,7 @@ export interface Post {
 export class FeedComponent implements OnInit {
 	posts: any[];
 	userConnected;
+	numberLikesOfPost: number;
 
 	constructor(
 		public router: Router,
@@ -56,11 +57,11 @@ export class FeedComponent implements OnInit {
 		});
 	}
 
-	toggleLike(id) {
+	async toggleLike(id) {
 		const options = this.JwtService.loggedIn();
 		console.log(options);
-		this.http
-			.get(`http://localhost:8000/api/post/${id}/likes`, options)
+		await this.http
+			.post(`http://localhost:8000/api/post/${id}/likes`, {}, options)
 			.subscribe(
 				(response) => {
 					console.log(response);

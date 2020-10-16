@@ -2,24 +2,15 @@ nav {
 	background-color: #121215;
 	height: 60px;
 	width: 100%;
-	box-shadow: 9px 20px 30px rgba(0, 0, 0, 0.568);
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.568);
 	padding: 1em;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	border-bottom: 1px solid rgb(58, 58, 58);
-	.btn_return {
-		height: 40px;
-		width: 40px;
-		border-radius: 3rem;
-		background-color: #8e31f8;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: none;
-		img {
-			height: 15px;
-		}
+
+	img {
+		height: 15px;
 	}
 }
 
@@ -60,6 +51,7 @@ form {
 			font-weight: 700;
 			font-size: 1em;
 			outline: none;
+			resize: none;
 		}
 		textarea::placeholder {
 			font-size: 1.1em;
@@ -67,7 +59,7 @@ form {
 		}
 		.btn_send_post {
 			height: 50px;
-			width: 140px;
+			width: 130px;
 			border-radius: 3rem;
 			background-color: #8e31f8;
 			color: white;

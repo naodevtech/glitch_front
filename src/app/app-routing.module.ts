@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ComposePostComponent } from './compose-post/compose-post.component';
 import { FeedComponent } from './feed/feed.component';
+import { ProfileComponent } from './profile/profile.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 
@@ -23,6 +24,11 @@ const routes: Routes = [
 	{
 		path: 'compose/post',
 		component: ComposePostComponent,
+		pathMatch: 'prefix',
+	},
+	{
+		path: 'profile/:id',
+		component: ProfileComponent,
 		pathMatch: 'prefix',
 	},
 ];
