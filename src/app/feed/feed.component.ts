@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { JwtService } from '../jwt.service';
 
 export interface Post {
@@ -26,11 +26,11 @@ export class FeedComponent implements OnInit {
 	posts: any[];
 	userConnected;
 	numberLikesOfPost: number;
-
 	constructor(
 		public router: Router,
 		private http: HttpClient,
-		private JwtService: JwtService
+		private JwtService: JwtService,
+		private routerActivate: ActivatedRoute
 	) {}
 
 	ngOnInit(): void {
@@ -70,5 +70,13 @@ export class FeedComponent implements OnInit {
 					console.log(error);
 				}
 			);
+	}
+
+	goToProfile(idProfile: string) {
+		return this.router.navigate([`/profile/${idProfile}`]);
+	}
+
+	goToPost(postId) {
+		return this.router.navigate([`/post/${postId}`]);
 	}
 }

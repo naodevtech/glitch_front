@@ -1,0 +1,31 @@
+<nav>
+    <img (click)="returnToBackPage()" src="../../assets/icons/arrow_return.svg" alt="arrow_return_icon" />
+</nav>
+<div *ngIf="post" class="container_post">
+    <div class="box_infos_post">
+        <div class="box_user_info">
+            <img class="avatar" src="{{post.avatar}}" alt="avatar" >
+            <h3>@{{post.username}}</h3>
+        </div>
+        <span>{{post.createdAt | date : short}}</span>
+    </div>
+    <div class="box_post_content">
+        <p>{{post.content}}</p>
+    </div>
+    <div class="bar"></div>
+    <div *ngIf="comments" class="container_comments">
+        <div class="box_comment" *ngFor="let comment of comments">
+            <div class="box_infos_comment">
+                <div class="box_user_info">
+                    <img class="avatar" src="{{comment.avatar}}" alt="avatar" >
+                    <h3>@{{comment.username}}</h3>
+                </div>
+                <span>{{comment.Comments.createdAt | date : short}}</span>
+            </div>
+            <div class="box_comment_content">
+                <p>{{comment.Comments.content}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<app-tab-bar></app-tab-bar>
