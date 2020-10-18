@@ -6,6 +6,11 @@
 	padding: 1em;
 	margin-top: 4em;
 	margin-bottom: 4em;
+	@media only screen and (min-width: 768px) {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 	.box_post {
 		background-color: #141415;
 		margin-top: 1em;
@@ -14,6 +19,10 @@
 		display: flex;
 		flex-direction: column;
 		border-radius: 1rem;
+		@media only screen and (min-width: 768px) {
+			width: 45%;
+			margin: 1em;
+		}
 		.box_post_infos {
 			display: flex;
 			align-items: center;
