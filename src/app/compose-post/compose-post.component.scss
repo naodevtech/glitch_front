@@ -19,6 +19,10 @@ form {
 	// background-color: red;
 	display: flex;
 	padding: 1em;
+	@media only screen and (min-width: 1440px) {
+		width: 70%;
+		margin: auto;
+	}
 	.box_user_account {
 		padding: 1em;
 		// background-color: green;

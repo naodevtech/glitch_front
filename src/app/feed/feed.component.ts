@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { JwtService } from '../jwt.service';
+import { GlitchService } from '../_services/glitch.service';
 
 export interface Post {
 	allPosts: [
@@ -24,29 +25,28 @@ export interface Post {
 })
 export class FeedComponent implements OnInit {
 	posts: any[];
-	userConnected;
 	numberLikesOfPost: number;
+
 	constructor(
 		public router: Router,
 		private http: HttpClient,
 		private JwtService: JwtService,
-		private routerActivate: ActivatedRoute
+		private glitchService: GlitchService
 	) {}
 
 	ngOnInit(): void {
 		const options = this.JwtService.loggedIn();
-		console.log(options);
-		this.http.get('http://localhost:8000/api/posts', options).subscribe(
-			(response) => {
+		this.glitchService
+			.getAllPosts(options)
+			.then((response) => {
 				this.posts = response['allPosts'];
 				console.log(this.posts);
 				this.sortPosts(this.posts);
-			},
-			(error) => {
+			})
+			.catch((error) => {
 				console.log(error);
 				this.router.navigate(['/']);
-			}
-		);
+			});
 	}
 
 	sortPosts(posts) {

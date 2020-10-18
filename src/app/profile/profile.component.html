@@ -9,6 +9,7 @@
     <div class="infos_profile">
         <h2 *ngIf="user">@{{user.username}}</h2>
         <div *ngIf="user" class="box_infos_follows">
+            <h3 *ngIf="posts">{{posts.length}} posts</h3>
             <h3>{{user.followers}} Followers</h3>
             <h3>{{user.followings}} Followings</h3>
         </div>

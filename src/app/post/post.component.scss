@@ -16,6 +16,14 @@ nav {
 
 .container_post {
 	padding: 1em;
+	@media only screen and (min-width: 768px) {
+		width: 90%;
+		margin: auto;
+	}
+	@media only screen and (min-width: 1440px) {
+		width: 70%;
+		margin: auto;
+	}
 	.box_infos_post {
 		display: flex;
 		align-items: center;
@@ -30,10 +38,15 @@ nav {
 				object-fit: cover;
 				border-radius: 5rem;
 				margin-right: 1em;
+				cursor: pointer;
 			}
 			h3 {
 				color: white;
 				font-size: 1em;
+				cursor: pointer;
+			}
+			h3:hover {
+				text-decoration: underline;
 			}
 		}
 		span {
@@ -143,10 +156,15 @@ nav {
 						object-fit: cover;
 						border-radius: 5rem;
 						margin-right: 1em;
+						cursor: pointer;
 					}
 					h3 {
 						color: white;
 						font-size: 0.8em;
+						cursor: pointer;
+					}
+					h3:hover {
+						text-decoration: underline;
 					}
 				}
 				span {

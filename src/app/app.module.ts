@@ -16,6 +16,7 @@ import { BtnPostComponent } from './btn-post/btn-post.component';
 import { ComposePostComponent } from './compose-post/compose-post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PostComponent } from './post/post.component';
+import { GlitchService } from './_services/glitch.service';
 
 @NgModule({
 	declarations: [
@@ -32,7 +33,7 @@ import { PostComponent } from './post/post.component';
 		PostComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-	providers: [],
+	providers: [GlitchService],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -12,6 +12,12 @@
 		background-repeat: no-repeat;
 		background-size: 100%;
 	}
+	@media only screen and (min-width: 1100px) {
+		background-image: url('../../assets/backgrounds/desktop_background.png');
+		background-repeat: no-repeat;
+		background-size: 120%;
+		background-position: center;
+	}
 	.logo {
 		height: 140px;
 		margin-bottom: 1em;
@@ -50,6 +56,10 @@
 		@media only screen and (min-width: 768px) {
 			height: 30%;
 			width: 50%;
+		}
+		@media only screen and (min-width: 1100px) {
+			height: 50%;
+			width: 30%;
 		}
 		input {
 			height: 60px;
