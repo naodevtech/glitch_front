@@ -10,6 +10,8 @@
         </div>
     </div>
     <div class="bar"></div>
+    <button *ngIf="displayBtn" class="btn_update_profile" type="submit">Modifier le profil</button>
+    <button *ngIf="!displayBtn" class="btn_follow_profile" type="submit">{{followValue}}</button>
     <div *ngIf="posts" class="container_posts">
         <div (click)="goToPost(post.id)" class="box_post" *ngFor="let post of posts">
             <div class="box_post_infos">
@@ -25,3 +27,4 @@
         </div>    
     </div>
 </div>
+<app-tab-bar></app-tab-bar>

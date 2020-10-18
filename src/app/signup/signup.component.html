@@ -1,1 +1,18 @@
-<div class="container-signup"> </div>
+<div class="container-signup">
+    <img class="logo" src="../../assets/logos/glitch_logo_official.svg" alt="logo" />
+    <div *ngIf="message" class="box-message-error">
+        <p>{{message}}</p>
+    </div>
+    <form>
+        <input type="text" name="lastname" [(ngModel)]="lastname" placeholder="Tapez votre nom" />
+        <input type="text" name="firstname" [(ngModel)]="firstname" placeholder="Tapez votre prénom" />
+        <input type="text" name="username" [(ngModel)]="username" placeholder="Tapez votre surnom" />
+        <input type="text" name="email" [(ngModel)]="email" placeholder="Tapez votre adresse-email" />
+        <input type="password" name="password" [(ngModel)]="password" placeholder="Tapez un mot de passe" />
+        <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="Retapez votre mot de passe" />
+        <input type="text" name="avatar" [(ngModel)]="avatar" placeholder="Entrez un lien (https://mon_image.jpeg/)" />
+        <input class="btn_signin"  type="submit" value="Inscription" (click)="register()">
+        <div class="bar"></div>
+        <input class="btn_signup" (click)="router.navigate(['/']);" type="button" value="Connexion"/>
+    </form>
+</div>

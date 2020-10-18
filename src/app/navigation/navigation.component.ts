@@ -27,4 +27,8 @@ export class NavigationComponent implements OnInit {
 		this.JwtService.logout();
 		this.router.navigate(link);
 	}
+
+	goToFeed() {
+		return this.router.navigate(['/feed']);
+	}
 }

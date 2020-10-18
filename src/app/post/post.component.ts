@@ -11,6 +11,8 @@ import { JwtService } from '../jwt.service';
 export class PostComponent implements OnInit {
 	post;
 	comments;
+	comment: string;
+
 	constructor(
 		public router: Router,
 		private http: HttpClient,
@@ -38,6 +40,7 @@ export class PostComponent implements OnInit {
 				(response) => {
 					console.log(response);
 					this.comments = response['comments'];
+					this.sortComments(this.comments);
 				},
 				(error) => {
 					console.log(error);
@@ -47,5 +50,41 @@ export class PostComponent implements OnInit {
 
 	returnToBackPage() {
 		return this.router.navigate(['/feed']);
+	}
+
+	addComment() {
+		const options = this.jwtService.loggedIn();
+		const postId = this.routerActivate.snapshot.params.id;
+		this.http
+			.post(
+				`http://localhost:8000/api/posts/${postId}/comments`,
+				{
+					content: this.comment,
+				},
+				options
+			)
+			.subscribe(
+				(response) => {
+					console.log(response);
+					this.ngOnInit();
+					this.comment = '';
+				},
+				(error) => {
+					console.log(error);
+				}
+			);
+	}
+
+	sortComments(comments) {
+		return comments.sort((a, b) => {
+			return (
+				<any>new Date(b.Comments.createdAt) -
+				<any>new Date(a.Comments.createdAt)
+			);
+		});
+	}
+
+	goToProfile(idProfile: string) {
+		return this.router.navigate([`/profile/${idProfile}`]);
 	}
 }

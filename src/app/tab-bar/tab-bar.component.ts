@@ -9,15 +9,17 @@ import { Router } from '@angular/router';
 export class TabBarComponent implements OnInit {
 	avatar: string;
 	id: string;
+
 	constructor(public router: Router) {}
 
 	ngOnInit(): void {
 		this.id = localStorage.getItem('id');
-		console.log(this.id);
 		this.avatar = localStorage.getItem('avatar');
 	}
 
 	goToProfile() {
+		// debug route on all pages
+		console.log(this.id);
 		return this.router.navigate([`/profile/${this.id}`]);
 	}
 }
