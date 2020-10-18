@@ -1,3 +1,7 @@
+<nav *ngIf="!displayBtn">
+    <img (click)="returnToBackPage()" src="../../assets/icons/arrow_return.svg" alt="arrow_return_icon" />
+</nav>
+
 <div class="container_profile">
     <div class="cover_profile">
         <img *ngIf="user" src="{{user.avatar}}" alt="avatar" />
@@ -27,4 +31,4 @@
         </div>    
     </div>
 </div>
-<app-tab-bar></app-tab-bar>
+<app-tab-bar *ngIf="displayBtn"></app-tab-bar>

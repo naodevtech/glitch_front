@@ -13,13 +13,13 @@ export class TabBarComponent implements OnInit {
 	constructor(public router: Router) {}
 
 	ngOnInit(): void {
-		this.id = localStorage.getItem('id');
 		this.avatar = localStorage.getItem('avatar');
 	}
 
 	goToProfile() {
 		// debug route on all pages
+		this.id = localStorage.getItem('id');
 		console.log(this.id);
-		return this.router.navigate([`/profile/${this.id}`]);
+		this.router.navigate([`/profile/${this.id}`]);
 	}
 }

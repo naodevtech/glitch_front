@@ -65,4 +65,8 @@ export class ProfileComponent implements OnInit {
 	toggleFollow() {
 		this.followValue = 'Follow';
 	}
+
+	returnToBackPage() {
+		return this.router.navigate(['/feed']);
+	}
 }
