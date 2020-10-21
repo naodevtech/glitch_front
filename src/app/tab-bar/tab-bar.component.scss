@@ -6,10 +6,15 @@
 	background-color: #121215;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: space-around;
 	padding: 2em;
 	@media only screen and (min-width: 768px) {
 		display: none;
+	}
+	.btn_home {
+		background-color: transparent;
+		border: none;
+		outline: none;
 	}
 	app-btn-post {
 		position: absolute;

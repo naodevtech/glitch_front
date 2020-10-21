@@ -22,4 +22,8 @@ export class TabBarComponent implements OnInit {
 		console.log(this.id);
 		this.router.navigate([`/profile/${this.id}`]);
 	}
+
+	goToFeed() {
+		return this.router.navigate(['/feed']);
+	}
 }

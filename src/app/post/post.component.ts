@@ -12,6 +12,7 @@ export class PostComponent implements OnInit {
 	post;
 	comments;
 	comment: string;
+	message: string = 'Commenter ce post...';
 
 	constructor(
 		public router: Router,
@@ -71,6 +72,7 @@ export class PostComponent implements OnInit {
 				},
 				(error) => {
 					console.log(error);
+					this.message = error.error.error;
 				}
 			);
 	}

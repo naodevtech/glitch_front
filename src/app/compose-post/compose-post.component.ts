@@ -11,6 +11,7 @@ import { JwtService } from '../jwt.service';
 export class ComposePostComponent implements OnInit {
 	post: string;
 	userConnected;
+	message: string = 'Quoi de neuf?';
 	constructor(
 		public router: Router,
 		private http: HttpClient,
@@ -42,6 +43,7 @@ export class ComposePostComponent implements OnInit {
 				},
 				(error) => {
 					console.log(error);
+					this.message = error.error.error;
 				}
 			);
 	}

@@ -1,5 +1,10 @@
 <div class="container_tab_bar">
-    <app-btn-post></app-btn-post>
+    <button class="btn_home" (click)="goToFeed()">
+        <img src="../../assets/icons/house.png" alt="btn_home"/>
+    </button>
+    <button class="btn_compose_post">
+        <app-btn-post></app-btn-post>
+    </button>
     <button class="btn_profile" type="button" (click)="goToProfile()">
         <img src="{{avatar}}" alt="profile_img"/>
     </button>

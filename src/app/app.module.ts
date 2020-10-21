@@ -17,6 +17,7 @@ import { ComposePostComponent } from './compose-post/compose-post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PostComponent } from './post/post.component';
 import { GlitchService } from './_services/glitch.service';
+import { SideBarComponent } from './side-bar/side-bar.component';
 
 @NgModule({
 	declarations: [
@@ -31,6 +32,7 @@ import { GlitchService } from './_services/glitch.service';
 		ComposePostComponent,
 		ProfileComponent,
 		PostComponent,
+		SideBarComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
 	providers: [GlitchService],

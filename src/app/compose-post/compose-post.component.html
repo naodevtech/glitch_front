@@ -6,7 +6,7 @@
         <img class="avatar" src="{{userConnected.avatar}}" alt="avatar" />
     </div>
     <div class="box_compose_post">
-        <textarea name="post" [(ngModel)]="post" placeholder="Quoi de neuf?"></textarea>
+        <textarea name="post" [(ngModel)]="post" placeholder="{{message}}"></textarea>
         <button class="btn_send_post"type="submit" (click)="addPost()">    
             <span>Poster</span>
             <img src="../../assets/icons/icon_compose_post.svg" alt="img_compose_post" />

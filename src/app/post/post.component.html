@@ -18,7 +18,7 @@
     </div>
     <div *ngIf="comments" class="container_comments">
         <form>
-            <textarea [(ngModel)]="comment" name="comment" placeholder="Commenter ce post..."></textarea>
+            <textarea [(ngModel)]="comment" name="comment" placeholder="{{message}}"></textarea>
             <button class="btn_send_comment" type="submit" (click)="addComment()">
                 <span>Commenter</span>
                 <img src="../../assets/icons/icon_compose_post.svg" alt="img_compose_post" />
