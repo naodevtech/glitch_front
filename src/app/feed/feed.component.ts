@@ -59,17 +59,7 @@ export class FeedComponent implements OnInit {
 
 	async toggleLike(id) {
 		const options = this.JwtService.loggedIn();
-		console.log(options);
-		await this.http
-			.post(`http://localhost:8000/api/post/${id}/likes`, {}, options)
-			.subscribe(
-				(response) => {
-					console.log(response);
-				},
-				(error) => {
-					console.log(error);
-				}
-			);
+		await this.glitchService.postLike(id, options)
 	}
 
 	goToProfile(idProfile: string) {

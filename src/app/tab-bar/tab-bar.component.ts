@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLinkActive } from '@angular/router';
 
 @Component({
 	selector: 'app-tab-bar',
@@ -23,7 +23,4 @@ export class TabBarComponent implements OnInit {
 		this.router.navigate([`/profile/${this.id}`]);
 	}
 
-	goToFeed() {
-		return this.router.navigate(['/feed']);
-	}
 }

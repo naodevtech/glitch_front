@@ -1,156 +1,157 @@
 nav {
-	background-color: #121215;
-	height: 60px;
-	width: 100%;
-	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.568);
-	padding: 1em;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	border-bottom: 1px solid rgb(58, 58, 58);
+  background-color: #121215;
+  height: 60px;
+  width: 100%;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.568);
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(58, 58, 58);
 
-	img {
-		height: 15px;
-	}
+  img {
+    height: 15px;
+  }
 }
 
 .container_profile {
-	height: 100%;
-	// background-color: red;
-	display: flex;
-	flex-direction: column;
-	.cover_profile {
-		height: 250px;
-		background-color: green;
-		display: flex;
-		flex-direction: column;
-		background-color: #8e31f8;
-		img {
-			height: 150px;
-			width: 150px;
-			object-fit: cover;
-			border-radius: 5rem;
-			position: relative;
-			top: 100%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			border: 3px solid #8e31f8;
-		}
-	}
+  height: 100%;
+  // background-color: red;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3em;
+  .cover_profile {
+    height: 250px;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    background-color: #8e31f8;
+    img {
+      height: 150px;
+      width: 150px;
+      object-fit: cover;
+      border-radius: 5rem;
+      position: relative;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid #8e31f8;
+    }
+  }
 
-	.infos_profile {
-		// background-color: red;
-		padding-top: 5em;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-		color: #8e31f8;
-		.box_infos_follows {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			// background-color: green;
-			width: 100%;
-			padding: 1em;
-			h3 {
-				margin: 0.5em;
-				color: white;
-				font-weight: bold;
-			}
-		}
-	}
-	.bar {
-		height: 2px;
-		background-color: rgb(48, 48, 48);
-		width: 80%;
-		margin: auto;
-		margin-bottom: 0.8em;
-	}
+  .infos_profile {
+    // background-color: red;
+    padding-top: 5em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #8e31f8;
+    .box_infos_follows {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // background-color: green;
+      width: 100%;
+      padding: 1em;
+      h3 {
+        margin: 0.5em;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+  .bar {
+    height: 2px;
+    background-color: rgb(48, 48, 48);
+    width: 80%;
+    margin: auto;
+    margin-bottom: 0.8em;
+  }
 
-	.btn_update_profile {
-		height: 40px;
-		width: 190px;
-		background-color: #8e31f8;
-		color: white;
-		font-size: 1em;
-		font-weight: 900;
-		border-radius: 0.4rem;
-		border: none;
-		margin: auto;
-		outline: none;
-	}
-	.btn_follow_profile {
-		height: 40px;
-		width: 190px;
-		background-color: #8e31f8;
-		color: white;
-		font-size: 1em;
-		font-weight: 900;
-		border-radius: 0.4rem;
-		border: none;
-		margin: auto;
-		outline: none;
-	}
-	.container_posts {
-		padding: 1em;
-		display: flex;
-		flex-direction: column;
-		@media only screen and (min-width: 768px) {
-			width: 80%;
-			margin: auto;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: center;
-		}
-		.box_post {
-			background-color: #141415;
-			margin-top: 1em;
-			margin-bottom: 1em;
-			padding: 1em;
-			display: flex;
-			flex-direction: column;
-			border-radius: 1rem;
-			@media only screen and (min-width: 768px) {
-				width: 43%;
-				margin: 1em;
-			}
-			.box_post_infos {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				color: white;
-				font-weight: 300;
-				padding-bottom: 1em;
-				.post_infos_user {
-					display: flex;
-					align-items: center;
-					.avatar {
-						height: 40px;
-						width: 40px;
-						object-fit: cover;
-						border-radius: 3rem;
-						margin-right: 0.8em;
-					}
-					h3 {
-						font-size: 1em;
-					}
-				}
-				span {
-					font-size: 0.8em;
-				}
-			}
+  .btn_update_profile {
+    height: 40px;
+    width: 190px;
+    background-color: #8e31f8;
+    color: white;
+    font-size: 1em;
+    font-weight: 900;
+    border-radius: 0.4rem;
+    border: none;
+    margin: auto;
+    outline: none;
+  }
+  .btn_follow_profile {
+    height: 40px;
+    width: 190px;
+    background-color: #8e31f8;
+    color: white;
+    font-size: 1em;
+    font-weight: 900;
+    border-radius: 0.4rem;
+    border: none;
+    margin: auto;
+    outline: none;
+  }
+  .container_posts {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    @media only screen and (min-width: 768px) {
+      width: 80%;
+      margin: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .box_post {
+      background-color: #141415;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      border-radius: 1rem;
+      @media only screen and (min-width: 768px) {
+        width: 43%;
+        margin: 1em;
+      }
+      .box_post_infos {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        font-weight: 300;
+        padding-bottom: 1em;
+        .post_infos_user {
+          display: flex;
+          align-items: center;
+          .avatar {
+            height: 40px;
+            width: 40px;
+            object-fit: cover;
+            border-radius: 3rem;
+            margin-right: 0.8em;
+          }
+          h3 {
+            font-size: 1em;
+          }
+        }
+        span {
+          font-size: 0.8em;
+        }
+      }
 
-			.post_content {
-				padding-top: 1em;
-				padding-bottom: 1em;
-				p {
-					color: #ffffff;
-					font-weight: bold;
-					line-height: 1.3em;
-					font-size: 0.9em;
-				}
-			}
-		}
-	}
+      .post_content {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        p {
+          color: #ffffff;
+          font-weight: bold;
+          line-height: 1.3em;
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
 }

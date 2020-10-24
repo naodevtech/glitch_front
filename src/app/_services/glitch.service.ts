@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class GlitchService {
 	constructor(private http: HttpClient) {}
 
-	getAllPosts(options): Promise<any> {
+	async getAllPosts(options): Promise<any> {
 		return this.http
 			.get('http://localhost:8000/api/posts', options)
 			.toPromise()
@@ -15,4 +15,16 @@ export class GlitchService {
 				return response;
 			});
 	}
+
+	async postLike(id, options): Promise<any> {
+		return this.http
+			.post(`http://localhost:8000/api/post/${id}/likes`, {}, options)
+			.toPromise()
+			.then((response) => {
+				console.log(response);
+			}).catch((error) => {
+				console.log(error);
+			})
+	}
+	
 }
