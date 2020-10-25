@@ -14,6 +14,7 @@ export class PostComponent implements OnInit {
   comment: string;
   message: string = "Commenter ce post...";
   btnValue: string;
+  btnColor: string;
   usersLikedPost: any[];
   postId = this.routerActivate.snapshot.params.id;
 
@@ -27,6 +28,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     const options = this.jwtService.loggedIn();
     this.btnValue = "J'aime";
+    this.btnColor = "white";
     this.http
       .get(`http://localhost:8000/api/posts/${this.postId}`, options)
       .subscribe(
@@ -51,6 +53,7 @@ export class PostComponent implements OnInit {
             if (userLiked.Likes.userId == localStorage.getItem("id")) {
               console.log("match");
               this.btnValue = "Je n'aime plus";
+              this.btnColor = "red";
               return console.log(this.btnValue);
             }
           });
