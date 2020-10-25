@@ -14,8 +14,9 @@
     </div>
     <div class="bar"></div>
     <div class="box_reactions">
-        <h4>{{post.likes}} j'aimes</h4>
+        <h4 routerLink="/post/{{post.id}}/likes">{{post.likes}} j'aimes</h4>
     </div>
+    <input type="submit" (click)="addLike(post.id)" value={{btnValue}} />
     <div *ngIf="comments" class="container_comments">
         <form>
             <textarea [(ngModel)]="comment" name="comment" placeholder="{{message}}"></textarea>
