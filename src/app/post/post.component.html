@@ -16,7 +16,7 @@
     <div class="box_reactions">
         <h4 (click)="goToLikesPage()">{{post.likes}} j'aimes</h4>
     </div>
-    <input type="submit" (click)="addLike(post.id)" [(value)]="btnValue" />
+    <button type="submit" (click)="addLike(post.id)">{{btnValue}}</button>
     <div class="container_comments">
         <form>
             <textarea [(ngModel)]="comment" name="comment" placeholder="{{message}}"></textarea>

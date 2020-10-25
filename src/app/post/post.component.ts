@@ -26,7 +26,7 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     const options = this.jwtService.loggedIn();
-
+    this.btnValue = "J'aime";
     this.http
       .get(`http://localhost:8000/api/posts/${this.postId}`, options)
       .subscribe(
@@ -45,16 +45,15 @@ export class PostComponent implements OnInit {
       .subscribe((response) => {
         this.usersLikedPost = response["likes"];
         console.log(this.usersLikedPost);
-        if (this.usersLikedPost.length > 0) {
-          this.usersLikedPost.map((userLiked) => {
+        if (this.usersLikedPost) {
+          return this.usersLikedPost.map((userLiked) => {
+            console.log(userLiked);
             if (userLiked.Likes.userId == localStorage.getItem("id")) {
+              console.log("match");
               this.btnValue = "Je n'aime plus";
-            } else {
-              this.btnValue = "J'aime";
+              return console.log(this.btnValue);
             }
           });
-        } else {
-          this.btnValue = "J'aime";
         }
       });
   }
