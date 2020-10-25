@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router, ActivatedRoute } from "@angular/router";
 import { JwtService } from "../jwt.service";
-import { GlitchService } from "../_services/glitch.service";
 
 @Component({
   selector: "app-post",
@@ -16,52 +15,36 @@ export class PostComponent implements OnInit {
   message: string = "Commenter ce post...";
   btnValue: string;
   usersLikedPost: any[];
-
+  postId = this.routerActivate.snapshot.params.id;
   constructor(
     public router: Router,
     private http: HttpClient,
     private jwtService: JwtService,
-    private routerActivate: ActivatedRoute,
-    private glitchServices: GlitchService
+    private routerActivate: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     const options = this.jwtService.loggedIn();
-    const postId = this.routerActivate.snapshot.params.id;
     this.http
-      .get(`http://localhost:8000/api/posts/${postId}`, options)
+      .get(`http://localhost:8000/api/posts/${this.postId}`, options)
       .subscribe(
         (response) => {
-          console.log(response);
           this.post = response;
-          this.getComments(this.post.id, options);
+          console.log(this.post);
+          this.getComments(this.postId, options);
         },
         (error) => {
           console.log(error);
         }
       );
-
-    this.getLikes(postId, options)
-      .then((response) => {
-        this.usersLikedPost = response["likes"];
-        this.usersLikedPost.map((user) => {
-          console.log(user);
-
-          if (user.Likes.userId == parseInt(localStorage.getItem("id"))) {
-            this.btnValue = "Je n'aime plus";
-          } else {
-            this.btnValue = "J'aime";
-          }
-        });
-        console.log(this.usersLikedPost);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   }
 
   returnToBackPage() {
     return this.router.navigate(["/feed"]);
+  }
+
+  goToLikesPage() {
+    this.router.navigate([`/post/${this.postId}/likes`]);
   }
 
   getComments(postId, options) {
@@ -69,7 +52,6 @@ export class PostComponent implements OnInit {
       .get(`http://localhost:8000/api/posts/${postId}/comments`, options)
       .subscribe(
         (response) => {
-          console.log(response);
           this.comments = response["comments"];
           this.sortComments(this.comments);
         },
@@ -92,7 +74,6 @@ export class PostComponent implements OnInit {
       )
       .subscribe(
         (response) => {
-          console.log(response);
           this.ngOnInit();
           this.comment = "";
         },
@@ -116,17 +97,15 @@ export class PostComponent implements OnInit {
     return this.router.navigate([`/profile/${idProfile}`]);
   }
 
-  addLike(postId: number) {
+  addLike() {
     const options = this.jwtService.loggedIn();
+    const postId = parseInt(this.routerActivate.snapshot.params.id);
+    console.log(postId);
     return this.http
       .post(`http://localhost:8000/api/post/${postId}/likes`, {}, options)
       .subscribe((response) => {
         console.log(response);
         this.ngOnInit();
       });
-  }
-
-  getLikes(postId, options) {
-    return this.glitchServices.getPostLikesById(postId, options);
   }
 }

@@ -14,10 +14,10 @@
     </div>
     <div class="bar"></div>
     <div class="box_reactions">
-        <h4 routerLink="/post/{{post.id}}/likes">{{post.likes}} j'aimes</h4>
+        <h4 (click)="goToLikesPage()">{{post.likes}} j'aimes</h4>
     </div>
-    <input type="submit" (click)="addLike(post.id)" value={{btnValue}} />
-    <div *ngIf="comments" class="container_comments">
+    <input type="submit" (click)="addLike(post.id)" [(value)]="btnValue" />
+    <div class="container_comments">
         <form>
             <textarea [(ngModel)]="comment" name="comment" placeholder="{{message}}"></textarea>
             <button class="btn_send_comment" type="submit" (click)="addComment()">
@@ -25,7 +25,7 @@
                 <img src="../../assets/icons/icon_compose_post.svg" alt="img_compose_post" />
             </button>
         </form>
-        <h4>{{comments.length}} commentaires</h4>
+        <h4 *ngIf="comments">{{comments.length}} commentaires</h4>
         <div class="box_comment" *ngFor="let comment of comments">
             <div class="box_infos_comment">
                 <div class="box_user_info">

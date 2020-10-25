@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { JwtService } from "../jwt.service";
 import { GlitchService } from "../_services/glitch.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-likes",
@@ -15,19 +16,21 @@ export class LikesComponent implements OnInit {
     public router: Router,
     private routerActivate: ActivatedRoute,
     private glitchServices: GlitchService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     const options = this.jwtService.loggedIn();
     const postId = this.routerActivate.snapshot.params.id;
-    this.getLikes(postId, options)
-      .then((response) => {
+    console.log(postId);
+
+    this.http
+      .get(`http://localhost:8000/api/post/${postId}/likes`, options)
+      .subscribe((response) => {
+        console.log(response);
         this.usersLikedPost = response["likes"];
         console.log(this.usersLikedPost);
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }
 
