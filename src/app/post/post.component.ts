@@ -16,6 +16,7 @@ export class PostComponent implements OnInit {
   btnValue: string;
   usersLikedPost: any[];
   postId = this.routerActivate.snapshot.params.id;
+
   constructor(
     public router: Router,
     private http: HttpClient,
@@ -25,6 +26,7 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     const options = this.jwtService.loggedIn();
+
     this.http
       .get(`http://localhost:8000/api/posts/${this.postId}`, options)
       .subscribe(
@@ -37,6 +39,24 @@ export class PostComponent implements OnInit {
           console.log(error);
         }
       );
+
+    this.http
+      .get(`http://localhost:8000/api/post/${this.postId}/likes`, options)
+      .subscribe((response) => {
+        this.usersLikedPost = response["likes"];
+        console.log(this.usersLikedPost);
+        if (this.usersLikedPost.length > 0) {
+          this.usersLikedPost.map((userLiked) => {
+            if (userLiked.Likes.userId == localStorage.getItem("id")) {
+              this.btnValue = "Je n'aime plus";
+            } else {
+              this.btnValue = "J'aime";
+            }
+          });
+        } else {
+          this.btnValue = "J'aime";
+        }
+      });
   }
 
   returnToBackPage() {
