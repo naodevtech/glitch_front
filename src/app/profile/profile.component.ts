@@ -1,73 +1,111 @@
-import { Component, OnInit } from '@angular/core';
-import { JwtService } from '../jwt.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { JwtService } from "../jwt.service";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
-	selector: 'app-profile',
-	templateUrl: './profile.component.html',
-	styleUrls: ['./profile.component.scss'],
+  selector: "app-profile",
+  templateUrl: "./profile.component.html",
+  styleUrls: ["./profile.component.scss"],
 })
 export class ProfileComponent implements OnInit {
-	user;
-	posts;
-	displayBtn: boolean;
-	followValue: string;
+  user;
+  posts;
+  displayBtn: boolean;
+  followValue: string;
+  followers: any[];
 
-	constructor(
-		public router: Router,
-		private routerActivate: ActivatedRoute,
-		private http: HttpClient,
-		private jwtService: JwtService
-	) {}
+  constructor(
+    public router: Router,
+    private routerActivate: ActivatedRoute,
+    private http: HttpClient,
+    private jwtService: JwtService
+  ) {}
 
-	ngOnInit(): void {
-		const options = this.jwtService.loggedIn();
-		const id = this.routerActivate.snapshot.params.id;
-		this.displayingBtn();
-		this.toggleFollow();
-		this.http.get(`http://localhost:8000/api/users/${id}`, options).subscribe(
-			(response) => {
-				console.log(response);
-				this.user = response;
-			},
-			(error) => {
-				console.log(error);
-			}
-		);
-		this.http
-			.get(`http://localhost:8000/api/users/${id}/posts`, options)
-			.subscribe(
-				(response) => {
-					console.log(response);
-					this.posts = response['posts'];
-				},
-				(error) => {
-					console.log(error);
-					this.router.navigate(['/']);
-				}
-			);
-	}
+  ngOnInit(): void {
+    const options = this.jwtService.loggedIn();
+    const id = this.routerActivate.snapshot.params.id;
 
-	goToPost(postId) {
-		return this.router.navigate([`/post/${postId}`]);
-	}
+    this.displayingBtn();
 
-	displayingBtn() {
-		const id = localStorage.getItem('id');
-		const profileId = this.routerActivate.snapshot.params.id;
-		if (id == profileId) {
-			this.displayBtn = true;
-		} else {
-			this.displayBtn = false;
-		}
-	}
+    this.http.get(`http://localhost:8000/api/users/${id}`, options).subscribe(
+      (response) => {
+        console.log(response);
+        this.user = response;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 
-	toggleFollow() {
-		this.followValue = 'Follow';
-	}
+    this.getFollowersByUserId(id, options);
 
-	returnToBackPage() {
-		return this.router.navigate(['/feed']);
-	}
+    this.http
+      .get(`http://localhost:8000/api/users/${id}/posts`, options)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.posts = response["posts"];
+        },
+        (error) => {
+          console.log(error);
+          this.router.navigate(["/"]);
+        }
+      );
+  }
+
+  goToPost(postId) {
+    return this.router.navigate([`/post/${postId}`]);
+  }
+
+  toggleFollow() {
+    const options = this.jwtService.loggedIn();
+    const userId = this.routerActivate.snapshot.params.id;
+    this.http
+      .post(`http://localhost:8000/api/users/${userId}/follows`, {}, options)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.ngOnInit();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+  displayingBtn() {
+    const id = localStorage.getItem("id");
+    const profileId = this.routerActivate.snapshot.params.id;
+    if (id == profileId) {
+      this.displayBtn = true;
+    } else {
+      this.displayBtn = false;
+    }
+  }
+
+  getFollowersByUserId(userId, options) {
+    return this.http
+      .get(`http://localhost:8000/api/users/${userId}/followers`, options)
+      .subscribe((followers) => {
+        console.log(followers);
+        this.followers = followers["followers"];
+        if (this.followers.length > 0) {
+          this.followers.map((follower) => {
+            console.log(follower.followerId);
+            if (follower.followerId == localStorage.getItem("id")) {
+              this.followValue = "Unfollow";
+            } else {
+              this.followValue = "Follow";
+            }
+          });
+        } else {
+          this.followValue = "Follow";
+        }
+      });
+  }
+
+  returnToBackPage() {
+    return this.router.navigate(["/feed"]);
+  }
 }
