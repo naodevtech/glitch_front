@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router, ActivatedRoute } from "@angular/router";
 import { JwtService } from "../jwt.service";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-post",
@@ -22,13 +23,16 @@ export class PostComponent implements OnInit {
     public router: Router,
     private http: HttpClient,
     private jwtService: JwtService,
-    private routerActivate: ActivatedRoute
+    private routerActivate: ActivatedRoute,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
     const options = this.jwtService.loggedIn();
+
     this.btnValue = "J'aime";
     this.btnColor = "white";
+
     this.http
       .get(`http://localhost:8000/api/posts/${this.postId}`, options)
       .subscribe(
@@ -62,7 +66,7 @@ export class PostComponent implements OnInit {
   }
 
   returnToBackPage() {
-    return this.router.navigate(["/feed"]);
+    return this._location.back();
   }
 
   goToLikesPage() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { JwtService } from "../jwt.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router, ActivatedRoute } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-profile",
@@ -19,7 +20,8 @@ export class ProfileComponent implements OnInit {
     public router: Router,
     private routerActivate: ActivatedRoute,
     private http: HttpClient,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -27,7 +29,7 @@ export class ProfileComponent implements OnInit {
     const id = this.routerActivate.snapshot.params.id;
 
     this.displayingBtn();
-
+    this.followValue = "Follow";
     this.http.get(`http://localhost:8000/api/users/${id}`, options).subscribe(
       (response) => {
         console.log(response);
@@ -95,17 +97,18 @@ export class ProfileComponent implements OnInit {
             console.log(follower.followerId);
             if (follower.followerId == localStorage.getItem("id")) {
               this.followValue = "Unfollow";
-            } else {
-              this.followValue = "Follow";
+              console.log(this.followValue);
             }
           });
-        } else {
-          this.followValue = "Follow";
         }
       });
   }
 
   returnToBackPage() {
-    return this.router.navigate(["/feed"]);
+    return this._location.back();
+  }
+
+  showFollowersUser(userId: number) {
+    return this.router.navigate([`/profile/${userId}/followers`]);
   }
 }

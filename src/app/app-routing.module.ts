@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ComposePostComponent } from "./compose-post/compose-post.component";
 import { FeedComponent } from "./feed/feed.component";
+import { FollowersComponent } from "./followers/followers.component";
 import { LikesComponent } from "./likes/likes.component";
 import { PostComponent } from "./post/post.component";
 import { ProfileComponent } from "./profile/profile.component";
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path: "post/:id/likes",
     component: LikesComponent,
+    pathMatch: "prefix",
+  },
+  {
+    path: "profile/:id/followers",
+    component: FollowersComponent,
     pathMatch: "prefix",
   },
 ];

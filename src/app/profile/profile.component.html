@@ -1,5 +1,5 @@
 <nav *ngIf="!displayBtn">
-    <img (click)="returnToBackPage()" src="../../assets/icons/arrow_return.svg" alt="arrow_return_icon" />
+    <app-navigation-back></app-navigation-back>
 </nav>
 
 <div class="container_profile">
@@ -10,7 +10,7 @@
         <h2 *ngIf="user">@{{user.username}}</h2>
         <div *ngIf="user" class="box_infos_follows">
             <h3 *ngIf="posts">{{posts.length}} posts</h3>
-            <h3>{{user.followers}} Followers</h3>
+            <h3 (click)="showFollowersUser(user.id)" >{{user.followers}} Followers</h3>
             <h3>{{user.followings}} Followings</h3>
         </div>
     </div>

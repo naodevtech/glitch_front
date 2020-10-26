@@ -19,6 +19,8 @@ import { PostComponent } from "./post/post.component";
 import { GlitchService } from "./_services/glitch.service";
 import { SideBarComponent } from "./side-bar/side-bar.component";
 import { LikesComponent } from "./likes/likes.component";
+import { FollowersComponent } from './followers/followers.component';
+import { NavigationBackComponent } from './navigation-back/navigation-back.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { LikesComponent } from "./likes/likes.component";
     PostComponent,
     SideBarComponent,
     LikesComponent,
+    FollowersComponent,
+    NavigationBackComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [GlitchService],

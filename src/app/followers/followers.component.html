@@ -1,0 +1,8 @@
+<app-navigation-back></app-navigation-back>
+<div class="container_followers">
+    <h1>Followers</h1>
+    <div class="box_user_follower" *ngFor="let follow of followers">
+        <img src="{{follow.follower.avatar}}" alt="avatar" />
+        <h4>@{{follow.follower.username}}</h4>
+    </div>
+</div>

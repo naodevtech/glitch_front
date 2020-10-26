@@ -26,16 +26,25 @@ export interface Post {
 export class FeedComponent implements OnInit {
   posts: any[];
   numberLikesOfPost: number;
+  userConnected = {
+    id: parseInt(localStorage.getItem("id")),
+    username: localStorage.getItem("username"),
+    avatar: localStorage.getItem("avatar"),
+  };
+  post: string;
+  message: string;
 
   constructor(
     public router: Router,
     private http: HttpClient,
-    private JwtService: JwtService,
+    private jwtService: JwtService,
     private glitchService: GlitchService
   ) {}
 
   ngOnInit(): void {
-    const options = this.JwtService.loggedIn();
+    console.log(this.userConnected);
+
+    const options = this.jwtService.loggedIn();
     this.glitchService
       .getAllPosts(options)
       .then((response) => {
@@ -58,7 +67,7 @@ export class FeedComponent implements OnInit {
   }
 
   async toggleLike(id) {
-    const options = this.JwtService.loggedIn();
+    const options = this.jwtService.loggedIn();
     await this.glitchService.postLike(id, options);
   }
 
@@ -66,7 +75,25 @@ export class FeedComponent implements OnInit {
     return this.router.navigate([`/post/${postId}`]);
   }
 
-  getLikesOfPostById() {
-    const options = this.JwtService.loggedIn();
+  addPost() {
+    const options = this.jwtService.loggedIn();
+    this.http
+      .post(
+        "http://localhost:8000/api/posts",
+        {
+          content: this.post,
+        },
+        options
+      )
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.ngOnInit();
+        },
+        (error) => {
+          console.log(error);
+          this.message = error.error.error;
+        }
+      );
   }
 }
