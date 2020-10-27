@@ -21,6 +21,7 @@ import { SideBarComponent } from "./side-bar/side-bar.component";
 import { LikesComponent } from "./likes/likes.component";
 import { FollowersComponent } from './followers/followers.component';
 import { NavigationBackComponent } from './navigation-back/navigation-back.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NavigationBackComponent } from './navigation-back/navigation-back.compo
     LikesComponent,
     FollowersComponent,
     NavigationBackComponent,
+    NotificationsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [GlitchService],

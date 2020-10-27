@@ -1,8 +1,13 @@
 <nav *ngIf="!displayBtn">
     <app-navigation-back></app-navigation-back>
 </nav>
+<nav *ngIf="displayBtn">
+    <app-navigation></app-navigation>
+</nav>
+
 
 <div class="container_profile">
+    <app-side-bar *ngIf="displayBtn"></app-side-bar>
     <div class="cover_profile">
         <img *ngIf="user" src="{{user.avatar}}" alt="avatar" />
     </div>
@@ -32,4 +37,4 @@
         </div>    
     </div>
 </div>
-<app-tab-bar *ngIf="displayBtn"></app-tab-bar>
+<app-tab-bar></app-tab-bar>

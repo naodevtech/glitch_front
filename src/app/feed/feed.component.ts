@@ -43,7 +43,7 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.userConnected);
-
+    this.message = "Quoi de neuf ?";
     const options = this.jwtService.loggedIn();
     this.glitchService
       .getAllPosts(options)
@@ -75,6 +75,10 @@ export class FeedComponent implements OnInit {
     return this.router.navigate([`/post/${postId}`]);
   }
 
+  goToProfile() {
+    return this.router.navigate([`/profile/${this.userConnected.id}`]);
+  }
+
   addPost() {
     const options = this.jwtService.loggedIn();
     this.http
@@ -92,7 +96,7 @@ export class FeedComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-          this.message = error.error.error;
+          return (this.message = error.error.error);
         }
       );
   }

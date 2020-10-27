@@ -4,6 +4,7 @@ import { ComposePostComponent } from "./compose-post/compose-post.component";
 import { FeedComponent } from "./feed/feed.component";
 import { FollowersComponent } from "./followers/followers.component";
 import { LikesComponent } from "./likes/likes.component";
+import { NotificationsComponent } from "./notifications/notifications.component";
 import { PostComponent } from "./post/post.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { SigninComponent } from "./signin/signin.component";
@@ -42,6 +43,11 @@ const routes: Routes = [
   {
     path: "post/:id/likes",
     component: LikesComponent,
+    pathMatch: "prefix",
+  },
+  {
+    path: "profile/:id/notifications",
+    component: NotificationsComponent,
     pathMatch: "prefix",
   },
   {

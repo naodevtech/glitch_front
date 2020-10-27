@@ -1,0 +1,31 @@
+app-tab-bar {
+  @media only screen and (min-width: 1100px) {
+    display: none;
+  }
+}
+
+.container_notifications {
+  height: 100vh;
+  padding-left: 3.5em;
+  display: flex;
+  app-side-bar {
+    margin-top: 1em;
+    background-color: green;
+    @media only screen and (min-width: 0px) and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .box_list_notifications {
+    height: 100%;
+    width: 80%;
+    padding: 1em;
+    padding-top: 5em;
+    h1 {
+      // for debug
+      display: none;
+      color: white;
+      font-size: 1.8em;
+    }
+  }
+}

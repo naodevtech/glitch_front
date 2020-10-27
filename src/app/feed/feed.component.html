@@ -1,32 +1,34 @@
 <app-navigation></app-navigation>
 <div class="container_feed">
-
-    <form class="box_post">
-        <div class="infos_user">
-            <img class="avatar" src="{{userConnected.avatar}}" alt="avatar"/>
-            <h3>@{{userConnected.username}}</h3>
-        </div>
-        <textarea name="post" [(ngModel)]="post" placeholder="{{message}}"></textarea>
-        <button class="btn_send_post"type="submit" (click)="addPost()">    
-            <span>Poster</span>
-            <img src="../../assets/icons/icon_compose_post.svg" alt="img_compose_post" />
-        </button>
-    </form>
-
-    <div (click)="goToPost(post.Posts.id)" class="box_post" *ngFor="let post of posts">
-        <div class="box_post_infos">
-            <div class="post_infos_user">
-                <img class="avatar" src="{{post.avatar}}" alt="avatar"/>
-                <h3>@{{post.username}}</h3>
+    <app-side-bar></app-side-bar>
+    <div class="box_feed">
+        <form class="box_post">
+            <div class="infos_user">
+                <img class="avatar" src="{{userConnected.avatar}}" alt="avatar"/>
+                <h3 (click)="goToProfile()">@{{userConnected.username}}</h3>
             </div>
-            <span>{{post.Posts.createdAt | date : short}}</span>
+            <textarea name="post" [(ngModel)]="post" [placeholder]="message"></textarea>
+            <button class="btn_send_post"type="submit" (click)="addPost()">    
+                <span>Poster</span>
+                <img src="../../assets/icons/icon_compose_post.svg" alt="img_compose_post" />
+            </button>
+        </form>
+    
+        <div (click)="goToPost(post.Posts.id)" class="box_post" *ngFor="let post of posts">
+            <div class="box_post_infos">
+                <div class="post_infos_user">
+                    <img class="avatar" src="{{post.avatar}}" alt="avatar"/>
+                    <h3>@{{post.username}}</h3>
+                </div>
+                <span>{{post.Posts.createdAt | date : short}}</span>
+            </div>
+            <div class="post_content">
+                <p>{{post.Posts.content}}</p>
+            </div>
+            <!-- <div class="post_bar_reactions">
+                <button type="submit" (click)="toggleLike(post.Posts.id)">{{numberLikesOfPost || 0}} likes</button> 
+           </div> -->
         </div>
-        <div class="post_content">
-            <p>{{post.Posts.content}}</p>
-        </div>
-        <!-- <div class="post_bar_reactions">
-            <button type="submit" (click)="toggleLike(post.Posts.id)">{{numberLikesOfPost || 0}} likes</button> 
-       </div> -->
     </div>
 </div>
 <app-tab-bar></app-tab-bar>
