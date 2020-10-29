@@ -3,12 +3,14 @@ import { Routes, RouterModule } from "@angular/router";
 import { ComposePostComponent } from "./compose-post/compose-post.component";
 import { FeedComponent } from "./feed/feed.component";
 import { FollowersComponent } from "./followers/followers.component";
+import { FollowingsComponent } from "./followings/followings.component";
 import { LikesComponent } from "./likes/likes.component";
 import { NotificationsComponent } from "./notifications/notifications.component";
 import { PostComponent } from "./post/post.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { SigninComponent } from "./signin/signin.component";
 import { SignupComponent } from "./signup/signup.component";
+import { TrendsComponent } from "./trends/trends.component";
 
 const routes: Routes = [
   {
@@ -53,6 +55,16 @@ const routes: Routes = [
   {
     path: "profile/:id/followers",
     component: FollowersComponent,
+    pathMatch: "prefix",
+  },
+  {
+    path: "profile/:id/followings",
+    component: FollowingsComponent,
+    pathMatch: "prefix",
+  },
+  {
+    path: "trends",
+    component: TrendsComponent,
     pathMatch: "prefix",
   },
 ];

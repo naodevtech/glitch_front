@@ -1,7 +1,10 @@
+<app-navigation-back></app-navigation-back>
 <div class="container_likes">
     <h1>Likes</h1>
-    <div class="box_user_liked" *ngFor="let user of usersLikedPost">
-        <img src="{{user.avatar}}" alt="avatar" />
-        <h4>@{{user.username}}</h4>
+    <div class="container_box_userLiked">
+        <div class="box_user_liked" *ngFor="let user of usersLikedPost">
+            <img src="{{user.avatar}}" alt="avatar" />
+            <h4>@{{user.username}}</h4>
+        </div>
     </div>
 </div>

@@ -1,0 +1,10 @@
+<app-navigation-back></app-navigation-back>
+<div class="container_followings">
+    <h1>Followings</h1>
+    <div class="container_users_followings">
+        <div class="box_user_following" *ngFor="let following of followings">
+            <img  (click)="goToProfile(following.followedId)" src="{{following.followed.avatar}}" alt="avatar" />
+            <h4 (click)="goToProfile(following.followedId)">@{{following.followed.username}}</h4>
+        </div>
+    </div>
+</div>

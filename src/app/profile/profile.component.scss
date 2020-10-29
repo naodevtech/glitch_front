@@ -64,6 +64,10 @@ app-navigation {
           font-size: 0.9em;
         }
       }
+      h3:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
   }
   .bar {
@@ -127,7 +131,7 @@ app-navigation {
       flex-direction: column;
       border-radius: 1rem;
       @media only screen and (min-width: 768px) {
-        width: 43%;
+        width: 40%;
         margin: 1em;
       }
       .box_post_infos {

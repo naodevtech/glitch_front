@@ -16,7 +16,7 @@
         <div *ngIf="user" class="box_infos_follows">
             <h3 *ngIf="posts">{{posts.length}} posts</h3>
             <h3 (click)="showFollowersUser(user.id)" >{{user.followers}} Followers</h3>
-            <h3>{{user.followings}} Followings</h3>
+            <h3 (click)="showFollowingsUser(user.id)">{{user.followings}} Followings</h3>
         </div>
     </div>
     <div class="bar"></div>

@@ -75,8 +75,12 @@ export class FeedComponent implements OnInit {
     return this.router.navigate([`/post/${postId}`]);
   }
 
-  goToProfile() {
+  goToProfileUserConnected() {
     return this.router.navigate([`/profile/${this.userConnected.id}`]);
+  }
+
+  goToProfile(idProfile: string) {
+    return this.router.navigate([`/profile/${idProfile}`]);
   }
 
   addPost() {

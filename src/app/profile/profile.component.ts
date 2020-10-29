@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   displayBtn: boolean;
   followValue: string;
   followers: any[];
+  followings: any[];
 
   constructor(
     public router: Router,
@@ -110,5 +111,9 @@ export class ProfileComponent implements OnInit {
 
   showFollowersUser(userId: number) {
     return this.router.navigate([`/profile/${userId}/followers`]);
+  }
+
+  showFollowingsUser(userId: number) {
+    return this.router.navigate([`/profile/${userId}/followings`]);
   }
 }

@@ -98,12 +98,6 @@ export class SignupComponent implements OnInit {
       this.registerForm.get("avatar").setValue(file);
       this.avatar = "http://localhost:8000/api/" + event.target.files[0].name;
       console.log(this.registerForm);
-    } else {
-      return this.registerForm
-        .get("avatar")
-        .setValue(
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Mark_Zuckerberg_F8_2018_Keynote_%28cropped_2%29.jpg/1200px-Mark_Zuckerberg_F8_2018_Keynote_%28cropped_2%29.jpg"
-        );
     }
   }
 }

@@ -5,7 +5,7 @@
         <form class="box_post">
             <div class="infos_user">
                 <img class="avatar" src="{{userConnected.avatar}}" alt="avatar"/>
-                <h3 (click)="goToProfile()">@{{userConnected.username}}</h3>
+                <h3 (click)="goToProfileUserConnected()">@{{userConnected.username}}</h3>
             </div>
             <textarea name="post" [(ngModel)]="post" [placeholder]="message"></textarea>
             <button class="btn_send_post"type="submit" (click)="addPost()">    
@@ -17,17 +17,14 @@
         <div (click)="goToPost(post.Posts.id)" class="box_post" *ngFor="let post of posts">
             <div class="box_post_infos">
                 <div class="post_infos_user">
-                    <img class="avatar" src="{{post.avatar}}" alt="avatar"/>
-                    <h3>@{{post.username}}</h3>
+                    <img class="avatar" src="{{post.avatar}}" (click)="goToProfile(post.Posts.userId)"alt="avatar"/>
+                    <h3 (click)="goToProfile(post.Posts.userId)">@{{post.username}}</h3>
                 </div>
                 <span>{{post.Posts.createdAt | dateAgo}}</span>
             </div>
             <div class="post_content">
                 <p>{{post.Posts.content}}</p>
             </div>
-            <!-- <div class="post_bar_reactions">
-                <button type="submit" (click)="toggleLike(post.Posts.id)">{{numberLikesOfPost || 0}} likes</button> 
-           </div> -->
         </div>
     </div>
 </div>

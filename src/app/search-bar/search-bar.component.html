@@ -1,1 +1,9 @@
-<p>search-bar works!</p>
+<form autocomplete="off">
+    <div class="autocomplete" style="width:300px;">
+        <input type="text" (input)="handleChangeInputSearch()" [(ngModel)]="searchTerm" name="searchTerm" placeholder="{{placeholder}}" />
+    </div>
+    <!-- <input type="text" (input)="handleChangeInputSearch()" [(ngModel)]="searchTerm" name="searchTerm" placeholder="{{placeholder}}" /> -->
+</form>
+<!-- <div *ngIf="usersFound" class="container_auto_suggestion">
+    <h1>Hello</h1>
+</div> -->

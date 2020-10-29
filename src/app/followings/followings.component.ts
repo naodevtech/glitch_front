@@ -5,12 +5,12 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
-  selector: "app-followers",
-  templateUrl: "./followers.component.html",
-  styleUrls: ["./followers.component.scss"],
+  selector: "app-followings",
+  templateUrl: "./followings.component.html",
+  styleUrls: ["./followings.component.scss"],
 })
-export class FollowersComponent implements OnInit {
-  followers;
+export class FollowingsComponent implements OnInit {
+  followings;
 
   constructor(
     public router: Router,
@@ -25,11 +25,11 @@ export class FollowersComponent implements OnInit {
     const userId = this.routerActivate.snapshot.params.id;
 
     this.http
-      .get(`http://localhost:8000/api/users/${userId}/followers`, options)
+      .get(`http://localhost:8000/api/users/${userId}/followings`, options)
       .subscribe((response) => {
         console.log(response);
-        this.followers = response["followers"];
-        console.log(this.followers);
+        this.followings = response["followings"];
+        console.log(this.followings);
       });
   }
 

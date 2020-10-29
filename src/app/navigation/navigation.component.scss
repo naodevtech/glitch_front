@@ -6,16 +6,25 @@ nav {
   padding: 1em;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: fixed;
   top: 0;
-
+  app-search-bar {
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+    @media only screen and (max-width: 1100px) {
+      display: none;
+    }
+  }
   .box_header_nav {
     display: flex;
     align-items: center;
+    margin-right: 4em;
     .logo {
       height: 35px;
       border-radius: 3rem;
+      cursor: pointer;
     }
     h4 {
       font-size: 1.2em;
