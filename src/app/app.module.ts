@@ -21,6 +21,7 @@ import { LikesComponent } from "./likes/likes.component";
 import { FollowersComponent } from "./followers/followers.component";
 import { NavigationBackComponent } from "./navigation-back/navigation-back.component";
 import { NotificationsComponent } from "./notifications/notifications.component";
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NotificationsComponent } from "./notifications/notifications.component"
     FollowersComponent,
     NavigationBackComponent,
     NotificationsComponent,
+    DateAgoPipe,
   ],
   imports: [
     BrowserModule,

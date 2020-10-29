@@ -20,7 +20,7 @@
                     <img class="avatar" src="{{post.avatar}}" alt="avatar"/>
                     <h3>@{{post.username}}</h3>
                 </div>
-                <span>{{post.Posts.createdAt | date : short}}</span>
+                <span>{{post.Posts.createdAt | dateAgo}}</span>
             </div>
             <div class="post_content">
                 <p>{{post.Posts.content}}</p>

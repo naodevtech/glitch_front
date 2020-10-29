@@ -6,7 +6,7 @@
             <img class="avatar" src="{{post.avatar}}" (click)= "goToProfile(post.id)" alt="avatar" >
             <h3 (click)= "goToProfile(post.id)">@{{post.username}}</h3>
         </div>
-        <span>{{post.createdAt | date : short}}</span>
+        <span>{{post.createdAt | dateAgo}}</span>
     </div>
     <div class="box_post_content">
         <p>{{post.content}}</p>
@@ -38,7 +38,7 @@
                     <img (click)="goToProfile(comment.id)"class="avatar" src="{{comment.avatar}}" alt="avatar" >
                     <h3 (click)="goToProfile(comment.id)">@{{comment.username}}</h3>
                 </div>
-                <span>{{comment.Comments.createdAt | date : short}}</span>
+                <span>{{comment.Comments.createdAt | dateAgo}}</span>
             </div>
             <div class="box_comment_content">
                 <p>{{comment.Comments.content}}</p>

@@ -29,7 +29,7 @@
                     <img *ngIf="user" class="avatar" src="{{user.avatar}}" alt="avatar"/>
                     <h3 *ngIf="user">@{{user.username}}</h3>
                 </div>
-                <span>{{post.createdAt | date : short}}</span>
+                <span>{{post.createdAt | dateAgo}}</span>
             </div>
             <div class="post_content">
                 <p>{{post.content}}</p>
