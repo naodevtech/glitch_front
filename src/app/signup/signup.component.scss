@@ -60,6 +60,23 @@
       height: 100%;
       width: 70%;
     }
+
+    input[type="file"] {
+      height: 100px;
+      width: 100px;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .custom-file-upload {
+      height: 100px;
+      width: 100px;
+      border-radius: 80%;
+      cursor: pointer;
+      margin-bottom: 1em;
+      background-size: cover;
+    }
+
     input {
       height: 60px;
       background-color: #e4e3e8;

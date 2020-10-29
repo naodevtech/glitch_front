@@ -1,8 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
-import { JwtModule } from "@auth0/angular-jwt";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -19,9 +18,9 @@ import { PostComponent } from "./post/post.component";
 import { GlitchService } from "./_services/glitch.service";
 import { SideBarComponent } from "./side-bar/side-bar.component";
 import { LikesComponent } from "./likes/likes.component";
-import { FollowersComponent } from './followers/followers.component';
-import { NavigationBackComponent } from './navigation-back/navigation-back.component';
-import { NotificationsComponent } from './notifications/notifications.component';
+import { FollowersComponent } from "./followers/followers.component";
+import { NavigationBackComponent } from "./navigation-back/navigation-back.component";
+import { NotificationsComponent } from "./notifications/notifications.component";
 
 @NgModule({
   declarations: [
@@ -42,7 +41,13 @@ import { NotificationsComponent } from './notifications/notifications.component'
     NavigationBackComponent,
     NotificationsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [GlitchService],
   bootstrap: [AppComponent],
 })
