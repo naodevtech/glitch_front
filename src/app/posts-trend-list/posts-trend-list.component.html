@@ -1,0 +1,23 @@
+<app-tab-bar></app-tab-bar>
+<app-navigation></app-navigation>
+<div *ngIf="videoGame"  class="container_posts_trend">
+    <app-side-bar></app-side-bar>
+    <header [style.backgroundImage]="'url('+ videoGame.background_image +')'"></header>
+    <div  class="box_infos">
+        <h1><span>#</span>{{videoGame.name}}</h1>
+    </div>
+    <div *ngIf="posts"class="container_posts_trend">
+        <div (click)="goToPost(post.Posts.id)" class="box_post" *ngFor="let post of posts">
+            <div class="box_post_infos">
+                <div class="post_infos_user">
+                    <img class="avatar" src="{{post.avatar}}" (click)="goToProfile(post.Posts.userId)"alt="avatar"/>
+                    <h3 (click)="goToProfile(post.Posts.userId)">@{{post.username}}</h3>
+                </div>
+                <span>{{post.Posts.createdAt | dateAgo}}</span>
+            </div>
+            <div class="post_content">
+                <p>{{post.Posts.content}}</p>
+            </div>
+        </div>
+    </div>
+</div>

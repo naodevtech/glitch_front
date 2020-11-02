@@ -32,7 +32,7 @@ export class FeedComponent implements OnInit {
     avatar: localStorage.getItem("avatar"),
   };
   post: string;
-  message: string;
+  placeholder: string = "Quoi de neuf";
 
   constructor(
     public router: Router,
@@ -43,7 +43,6 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.userConnected);
-    this.message = "Quoi de neuf ?";
     const options = this.jwtService.loggedIn();
     this.glitchService
       .getAllPosts(options)
@@ -95,12 +94,13 @@ export class FeedComponent implements OnInit {
       )
       .subscribe(
         (response) => {
+          this.placeholder = "Quoi de neuf ?";
           console.log(response);
           this.ngOnInit();
         },
         (error) => {
           console.log(error);
-          return (this.message = error.error.error);
+          return (this.placeholder = error.error.error);
         }
       );
   }

@@ -2,4 +2,15 @@
 <app-navigation></app-navigation>
 <div class="container_trends">
     <app-side-bar></app-side-bar>
+    <div class="container_games_trends">
+        <h1><span>#</span>Parcourir</h1>
+        <div class="container_sub_trends">
+            <div class="box_game_trends" *ngFor="let videoGame of videoGamesTrends" (click)="goToPostsTrend(videoGame.id)" >
+                <div class="box_preview" [style.backgroundImage]="'url('+ videoGame.background_image +')'"></div>
+                <div class="box_infos_game">
+                    <h2><span>#</span>{{videoGame.slug}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

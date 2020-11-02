@@ -24,6 +24,7 @@ import { NotificationsComponent } from "./notifications/notifications.component"
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { FollowingsComponent } from './followings/followings.component';
 import { TrendsComponent } from './trends/trends.component';
+import { PostsTrendListComponent } from './posts-trend-list/posts-trend-list.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { TrendsComponent } from './trends/trends.component';
     DateAgoPipe,
     FollowingsComponent,
     TrendsComponent,
+    PostsTrendListComponent,
   ],
   imports: [
     BrowserModule,

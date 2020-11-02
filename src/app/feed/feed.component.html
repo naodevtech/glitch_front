@@ -7,7 +7,7 @@
                 <img class="avatar" src="{{userConnected.avatar}}" alt="avatar"/>
                 <h3 (click)="goToProfileUserConnected()">@{{userConnected.username}}</h3>
             </div>
-            <textarea name="post" [(ngModel)]="post" [placeholder]="message"></textarea>
+            <textarea name="post" [(ngModel)]="post" [placeholder]="placeholder"></textarea>
             <button class="btn_send_post"type="submit" (click)="addPost()">    
                 <span>Poster</span>
                 <img src="../../assets/icons/icon_compose_post.svg" alt="img_compose_post" />

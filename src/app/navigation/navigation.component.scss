@@ -9,6 +9,7 @@ nav {
   justify-content: flex-start;
   position: fixed;
   top: 0;
+  z-index: 4;
   app-search-bar {
     @media only screen and (max-width: 768px) {
       display: none;

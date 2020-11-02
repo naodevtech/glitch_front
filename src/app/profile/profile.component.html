@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="bar"></div>
-    <input *ngIf="displayBtn" class="btn_update_profile" type="submit" value="Modifier le profil"/>
+    <input *ngIf="displayBtn" class="btn_update_profile" type="submit" value="Modifier votre profil"/>
     <input *ngIf="!displayBtn" class="btn_follow_profile" type="submit" [(ngModel)]="followValue" name="followValue" [(value)]="followValue" (click)="toggleFollow()"/>
     <div *ngIf="posts" class="container_posts">
         <div (click)="goToPost(post.id)" class="box_post" *ngFor="let post of posts">

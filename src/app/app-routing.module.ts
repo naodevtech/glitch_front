@@ -7,6 +7,7 @@ import { FollowingsComponent } from "./followings/followings.component";
 import { LikesComponent } from "./likes/likes.component";
 import { NotificationsComponent } from "./notifications/notifications.component";
 import { PostComponent } from "./post/post.component";
+import { PostsTrendListComponent } from "./posts-trend-list/posts-trend-list.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { SigninComponent } from "./signin/signin.component";
 import { SignupComponent } from "./signup/signup.component";
@@ -65,6 +66,11 @@ const routes: Routes = [
   {
     path: "trends",
     component: TrendsComponent,
+    pathMatch: "prefix",
+  },
+  {
+    path: "trends/:trendGame/posts",
+    component: PostsTrendListComponent,
     pathMatch: "prefix",
   },
 ];
