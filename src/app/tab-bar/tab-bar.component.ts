@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, RouterLinkActive } from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-tab-bar",

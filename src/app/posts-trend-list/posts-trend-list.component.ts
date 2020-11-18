@@ -27,9 +27,7 @@ export class PostsTrendListComponent implements OnInit {
     this.http
       .get(`https://api.rawg.io/api/games/${gameId}?key=${this.APIKEY}`)
       .subscribe((response) => {
-        console.log(response);
         this.videoGame = response;
-        console.log(this.videoGame);
         if (this.videoGame) {
           this.getPostOfTrend(options);
         }
@@ -42,7 +40,6 @@ export class PostsTrendListComponent implements OnInit {
       .get(`http://localhost:8000/api/trends?trendGame=${trend}`, options)
       .subscribe(
         (response) => {
-          console.log(response["posts"]);
           return (this.posts = response["posts"]);
         },
         (error) => {

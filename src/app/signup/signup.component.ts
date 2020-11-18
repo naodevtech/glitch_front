@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
-import { JwtService } from "../jwt.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
@@ -23,7 +22,6 @@ export class SignupComponent implements OnInit {
   constructor(
     public router: Router,
     private http: HttpClient,
-    private jwtService: JwtService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -37,12 +35,11 @@ export class SignupComponent implements OnInit {
       confirmPassword: [""],
       avatar: [""],
     });
-
     this.avatar = "http://localhost:8000/api/glitch_rounded.png";
   }
 
   register() {
-    const formData = new FormData();
+    const formData: FormData = new FormData();
     formData.append("lastname", this.registerForm.get("lastname").value);
     formData.append("firstname", this.registerForm.get("firstname").value);
     formData.append("username", this.registerForm.get("username").value);
@@ -63,25 +60,7 @@ export class SignupComponent implements OnInit {
           return (this.message =
             "Les deux mots de passe doivent être identiques ❌ ");
         } else {
-          this.jwtService
-            .login({
-              email: response["newSubscriber"].email,
-              password: this.registerForm.get("password").value,
-            })
-            .subscribe((response) => {
-              localStorage.setItem("token", response["token"]);
-              localStorage.setItem("id", response["userConnected"].id);
-              localStorage.setItem(
-                "firstname",
-                response["userConnected"].firstname
-              );
-              localStorage.setItem(
-                "lastname",
-                response["userConnected"].lastname
-              );
-              localStorage.setItem("avatar", response["userConnected"].avatar);
-              return this.router.navigate(["/"]);
-            });
+          this.router.navigate(["/"]);
         }
       },
       (error) => {

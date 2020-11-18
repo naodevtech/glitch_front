@@ -19,13 +19,11 @@ export class TrendsComponent implements OnInit {
         `https://api.rawg.io/api/games?key=${this.APIKEY}&dates=2019-10-10,2020-10-10&ordering=-added`
       )
       .subscribe((response) => {
-        console.log(response);
         this.videoGamesTrends = response["results"];
-        console.log(this.videoGamesTrends);
       });
   }
 
-  goToPostsTrend(gameId) {
+  goToPostsTrend(gameId: number) {
     this.router.navigate([`trends/${gameId}/posts`]);
   }
 }

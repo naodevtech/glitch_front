@@ -3,6 +3,11 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { JwtService } from "../jwt.service";
 
+export interface UserConnected {
+  id: string;
+  avatar: string;
+}
+
 @Component({
   selector: "app-compose-post",
   templateUrl: "./compose-post.component.html",
@@ -10,8 +15,9 @@ import { JwtService } from "../jwt.service";
 })
 export class ComposePostComponent implements OnInit {
   post: string;
-  userConnected;
+  userConnected: UserConnected;
   message: string = "Quoi de neuf?";
+
   constructor(
     public router: Router,
     private http: HttpClient,
@@ -42,7 +48,6 @@ export class ComposePostComponent implements OnInit {
           this.router.navigate(["/feed"]);
         },
         (error) => {
-          console.log(error);
           if (error.status === 401) {
             this.router.navigate(["/"]);
           } else if (error.status === 404) {

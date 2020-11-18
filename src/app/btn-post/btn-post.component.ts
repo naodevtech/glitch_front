@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { JwtService } from '../jwt.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-	selector: 'app-btn-post',
-	templateUrl: './btn-post.component.html',
-	styleUrls: ['./btn-post.component.scss'],
+  selector: "app-btn-post",
+  templateUrl: "./btn-post.component.html",
+  styleUrls: ["./btn-post.component.scss"],
 })
 export class BtnPostComponent implements OnInit {
-	constructor(public router: Router, jwtService: JwtService) {}
+  constructor(public router: Router) {}
 
-	ngOnInit(): void {}
+  ngOnInit(): void {}
 
-	composePost() {
-		return this.router.navigate(['/compose/post']);
-	}
+  composePost() {
+    return this.router.navigate(["/compose/post"]);
+  }
 }

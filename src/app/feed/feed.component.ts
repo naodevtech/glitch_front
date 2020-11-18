@@ -70,18 +70,6 @@ export class FeedComponent implements OnInit {
     await this.glitchService.postLike(id, options);
   }
 
-  goToPost(postId) {
-    return this.router.navigate([`/post/${postId}`]);
-  }
-
-  goToProfileUserConnected() {
-    return this.router.navigate([`/profile/${this.userConnected.id}`]);
-  }
-
-  goToProfile(idProfile: string) {
-    return this.router.navigate([`/profile/${idProfile}`]);
-  }
-
   addPost() {
     const options = this.jwtService.loggedIn();
     this.http
@@ -103,5 +91,17 @@ export class FeedComponent implements OnInit {
           return (this.placeholder = error.error.error);
         }
       );
+  }
+
+  goToPost(postId) {
+    return this.router.navigate([`/post/${postId}`]);
+  }
+
+  goToProfileUserConnected() {
+    return this.router.navigate([`/profile/${this.userConnected.id}`]);
+  }
+
+  goToProfile(idProfile: string) {
+    return this.router.navigate([`/profile/${idProfile}`]);
   }
 }

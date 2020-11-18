@@ -27,10 +27,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     const options = this.jwtService.loggedIn();
-    const id = this.routerActivate.snapshot.params.id;
+    const id: string = this.routerActivate.snapshot.params.id;
 
     this.displayingBtn();
+
     this.followValue = "Follow";
+
     this.http.get(`http://localhost:8000/api/users/${id}`, options).subscribe(
       (response) => {
         console.log(response);

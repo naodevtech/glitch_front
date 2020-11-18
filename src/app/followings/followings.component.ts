@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { JwtService } from "../jwt.service";
-import { GlitchService } from "../_services/glitch.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
@@ -10,26 +9,23 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./followings.component.scss"],
 })
 export class FollowingsComponent implements OnInit {
-  followings;
+  followings: any[];
 
   constructor(
     public router: Router,
     private routerActivate: ActivatedRoute,
-    private glitchServices: GlitchService,
     private jwtService: JwtService,
     private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     const options = this.jwtService.loggedIn();
-    const userId = this.routerActivate.snapshot.params.id;
+    const userId: string = this.routerActivate.snapshot.params.id;
 
     this.http
       .get(`http://localhost:8000/api/users/${userId}/followings`, options)
       .subscribe((response) => {
-        console.log(response);
         this.followings = response["followings"];
-        console.log(this.followings);
       });
   }
 
