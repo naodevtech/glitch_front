@@ -118,4 +118,8 @@ export class ProfileComponent implements OnInit {
   showFollowingsUser(userId: number) {
     return this.router.navigate([`/profile/${userId}/followings`]);
   }
+
+  goToUpdateProfile(userId: number) {
+    return this.router.navigate([`/profile/${userId}/update`]);
+  }
 }

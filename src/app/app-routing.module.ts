@@ -12,6 +12,7 @@ import { ProfileComponent } from "./profile/profile.component";
 import { SigninComponent } from "./signin/signin.component";
 import { SignupComponent } from "./signup/signup.component";
 import { TrendsComponent } from "./trends/trends.component";
+import { UpdateProfileComponent } from "./update-profile/update-profile.component";
 
 const routes: Routes = [
   {
@@ -61,6 +62,11 @@ const routes: Routes = [
   {
     path: "profile/:id/followings",
     component: FollowingsComponent,
+    pathMatch: "prefix",
+  },
+  {
+    path: "profile/:id/update",
+    component: UpdateProfileComponent,
     pathMatch: "prefix",
   },
   {
